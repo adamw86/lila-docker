@@ -366,7 +366,6 @@ fn setup(mut config: Config, first_setup: bool, noninteractive: bool) -> std::io
         let mut cmd = Command::new("git");
         cmd.arg("clone")
             .arg("--origin")
-            .arg("upstream")
             .arg("--depth")
             .arg("1")
             .arg("--recurse-submodules")
