@@ -338,8 +338,8 @@ fn setup(mut config: Config, first_setup: bool, noninteractive: bool) -> std::io
     create_placeholder_dirs();
 
     let mut repos_to_clone: Vec<Repository> = vec![
-        Repository::new("lichess-org", "lila"),
-        Repository::new("lichess-org", "lila-ws"),
+        Repository::new("adamw86", "lila"),
+        Repository::new("adamw86", "lila-ws"),
     ];
 
     if config.setup_database.unwrap_or_default() {
@@ -366,6 +366,7 @@ fn setup(mut config: Config, first_setup: bool, noninteractive: bool) -> std::io
         let mut cmd = Command::new("git");
         cmd.arg("clone")
             .arg("--origin")
+            .arg("upstream")
             .arg("--depth")
             .arg("1")
             .arg("--recurse-submodules")
@@ -566,7 +567,7 @@ fn prompt_for_services() -> Result<Vec<OptionalService<'static>>, Error> {
     .item(
         OptionalService {
             compose_profile: vec!["chessground"].into(),
-            repositories: vec![Repository::new("lichess-org", "chessground")].into(),
+            repositories: vec![Repository::new("adamw86", "chessground")].into(),
         },
         "Chessground",
         "standalone board UI",
@@ -582,7 +583,7 @@ fn prompt_for_services() -> Result<Vec<OptionalService<'static>>, Error> {
     .item(
         OptionalService {
             compose_profile: None ,
-            repositories: vec![Repository::new("lichess-org", "scalachess")].into(),
+            repositories: vec![Repository::new("adamw86", "scalachess")].into(),
         },
         "Scalachess",
         "standalone chess logic library",
