@@ -125,6 +125,7 @@ services:
       - ./repos/chessground:/app
     profiles:
       - chessground
+      - ./.pnpm-store:/.pnpm-store
 
   pgn_viewer:
     build:
